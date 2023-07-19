@@ -2,10 +2,10 @@ const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 
 
-// Create variables for mainWindow, tray, database, and database path
+// Create variables for mainWindow
 let mainWindow = null;
-let tray = null;
 
+// Create the main window when Electron has finished initializing
 function createWindow() {
   // Create a new Electron browser window
   mainWindow = new BrowserWindow({
@@ -13,7 +13,8 @@ function createWindow() {
     height: 600,
     webPreferences: {
       nodeIntegration: true // Enable the use of Node.js in the renderer context
-    }
+    },
+    icon: path.join(__dirname, '../img/icon.png')
   });
 
   // Load the index.html file
@@ -36,12 +37,14 @@ function createWindow() {
           label: 'Option 1',
           click() {
             console.log('Option 1 clicked');
+            loadIndexPage();
           }
         },
         {
           label: 'Option 2',
           click() {
             console.log('Option 2 clicked');
+            loadPage2();
           }
         },
         {
@@ -62,6 +65,7 @@ function createWindow() {
             label: 'About',
             click() {
               console.log('About clicked');
+              loadAboutPage();
             }
         }
         // Submenu items for 'Help' menu
@@ -94,4 +98,14 @@ app.on('activate', () => {
 // Load the index.html file
 function loadIndexPage() {
   mainWindow.loadFile(path.join(__dirname, '../html/index.html'));
+}
+
+// Load the page2.html file
+function loadPage2() {
+  mainWindow.loadFile(path.join(__dirname, '../html/page2.html'));
+}
+
+// Load the about.html file
+function loadAboutPage() {
+  mainWindow.loadFile(path.join(__dirname, '../html/about.html'));
 }
