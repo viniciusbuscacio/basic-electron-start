@@ -10,7 +10,7 @@ Basic Electron.js boilerplate for my personal projects.
 - [x] Bootstrap
 
 
-# how to use
+## how to use
 ```bash
 git clone https://github.com/viniciusbuscacio/basic-electron-start.git
 cd basic-electron-start
