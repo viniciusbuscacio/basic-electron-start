@@ -18,5 +18,14 @@ npm install
 npm start
 ```
 
+## how to build
+To create the .EXE installer and save it to the dist folder, run the following command:
+
+```bash
+npm run build
+```
+
+
+
 
 

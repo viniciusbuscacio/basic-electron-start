@@ -3,7 +3,7 @@
 // this script will delete all files in the build/dist folder except for the .exe file
 const fs = require('fs');
 const path = require('path');
-const outputDirectory = path.resolve(__dirname, './build/dist');
+const outputDirectory = path.resolve(__dirname, './build');
 
 fs.readdir(outputDirectory, (err, files) => {
   if (err) throw err;
