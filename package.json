@@ -1,21 +1,28 @@
 {
-  "name": "vini-electron-start2",
+  "name": "basic-electron-start",
   "version": "1.0.0",
-  "description": "",
+  "description": "Basic Electron.js boilerplate for my personal projects",
   "main": "./src/js/main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder build --windows",
+    "postbuild": "node ./post-build.js"
+  },
+  "build": {
+    "appId": "com.basicelectronstart",
+    "files": [],
+    "directories": {
+      "output": "build/dist"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "latest",
-    "electron": "24.6.3"
+    "bootstrap": "latest"
   },
   "devDependencies": {
-    "electron-builder": "latest",
-    "electron-is-dev": "latest"
+    "electron-builder": "latest"
   }
 }

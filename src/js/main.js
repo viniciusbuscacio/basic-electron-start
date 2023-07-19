@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
-const isDev = require('electron-is-dev');
+
 
 // Create variables for mainWindow, tray, database, and database path
 let mainWindow = null;
@@ -19,8 +19,8 @@ function createWindow() {
   // Load the index.html file
   loadIndexPage();
 
-  // Google Chrome Dev Tools
-  mainWindow.webContents.openDevTools(); 
+  // Open Google Chrome Dev Tools
+  //mainWindow.webContents.openDevTools(); 
 
   // Event triggered when the window is closed
   mainWindow.on('closed', () => {
