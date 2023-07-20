@@ -1,6 +1,5 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('path');
-
 
 // Create variables for mainWindow
 let mainWindow = null;
@@ -12,22 +11,28 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true // Enable the use of Node.js in the renderer context
+      nodeIntegration: false, 
+      contextIsolation: true,
+      enableRemoteModule: false, // Turn off remote
+      preload: path.join(__dirname, 'preload.js')
     },
     icon: path.join(__dirname, '../img/icon.png')
+
+    
   });
 
   mainWindow.maximize(); // set the window size to maximized
 
-  // Load the index.html file
-  loadIndexPage();
-
+  // Load the index.html in the main process only when the app starts
+  // after this, the index page will be loaded only by the renderer process via loadIndexPage() function
+  mainWindow.loadFile(path.join(__dirname, '../html/index.html'));
+  
   // Open Google Chrome Dev Tools
-  //mainWindow.webContents.openDevTools(); 
+  mainWindow.webContents.openDevTools(); 
 
   // Event triggered when the window is closed
   mainWindow.on('closed', () => {
-    console.log('Window closed');
+    //console.log('Window closed');
   });
 
   // Create the menu
@@ -38,14 +43,14 @@ function createWindow() {
         {
           label: 'Option 1',
           click() {
-            console.log('Option 1 clicked');
+            //console.log('Option 1 clicked');
             loadIndexPage();
           }
         },
         {
           label: 'Option 2',
           click() {
-            console.log('Option 2 clicked');
+            //console.log('Option 2 clicked');
             loadPage2();
           }
         },
@@ -66,7 +71,7 @@ function createWindow() {
         {
             label: 'About',
             click() {
-              console.log('About clicked');
+              //console.log('About clicked');
               loadAboutPage();
             }
         }
@@ -97,17 +102,19 @@ app.on('activate', () => {
   }
 });
 
-// Load the index.html file
+/* function to load the pages
+it will send an event to the renderer process
+via preload.js
+*/
 function loadIndexPage() {
-  mainWindow.loadFile(path.join(__dirname, '../html/index.html'));
+  mainWindow.webContents.send('load-page', 'index');
 }
 
-// Load the page2.html file
 function loadPage2() {
-  mainWindow.loadFile(path.join(__dirname, '../html/page2.html'));
+  mainWindow.webContents.send('load-page', 'page2');
 }
 
-// Load the about.html file
 function loadAboutPage() {
-  mainWindow.loadFile(path.join(__dirname, '../html/about.html'));
+  mainWindow.webContents.send('load-page', 'about');
 }
+

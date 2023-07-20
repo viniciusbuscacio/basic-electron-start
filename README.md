@@ -8,6 +8,8 @@ Basic Electron.js boilerplate for my personal projects.
 - [x] HTML
 - [x] CSS
 - [x] Bootstrap
+- [x] Dark mode
+
 
 
 ## how to use
