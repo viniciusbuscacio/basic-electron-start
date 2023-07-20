@@ -9,6 +9,7 @@ Basic Electron.js boilerplate for my personal projects.
 - [x] CSS
 - [x] Bootstrap
 - [x] Dark mode
+- [x] Electron Inter-process communication (IPC)
 
 
 
