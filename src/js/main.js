@@ -17,6 +17,8 @@ function createWindow() {
     icon: path.join(__dirname, '../img/icon.png')
   });
 
+  mainWindow.maximize(); // set the window size to maximized
+
   // Load the index.html file
   loadIndexPage();
 

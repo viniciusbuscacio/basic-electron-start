@@ -1,0 +1,13 @@
+div {
+    margin-bottom: 20px; /* space between DIV tags */
+    /* border: 1px solid red; */   /* uncomment to visualize DIV tags */
+}
+
+body {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+body.fade-in {
+    opacity: 1;
+}

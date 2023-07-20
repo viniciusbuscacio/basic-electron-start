@@ -11,6 +11,9 @@
   },
   "build": {
     "appId": "com.basicelectronstart",
+    "win": {
+      "icon": "src/img/icon.png"
+    },
     "files": [],
     "directories": {
       "output": "build"
