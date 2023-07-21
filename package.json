@@ -1,7 +1,7 @@
 {
-  "name": "basic-electron-start",
-  "version": "1.0.0",
-  "description": "Basic Electron.js boilerplate for my personal projects",
+  "name": "yt2pdf",
+  "version": "0.1.0",
+  "description": "Download youtube videos as pdfs",
   "main": "./src/js/main.js",
   "scripts": {
     "start": "electron .",
@@ -10,7 +10,7 @@
     "postbuild": "node ./post-build.js"
   },
   "build": {
-    "appId": "com.basicelectronstart",
+    "appId": "com.yt2pdf",
     "win": {
       "icon": "src/img/icon.png"
     },
@@ -23,7 +23,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "latest"
+    "bootstrap": "latest",
+    "electron": "^25.3.1"
   },
   "devDependencies": {
     "electron-builder": "latest"
